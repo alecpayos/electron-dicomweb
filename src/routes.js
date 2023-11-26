@@ -11,7 +11,7 @@ const router = window => {
         window.loadURL('https://dev1-radiologist.getdentalray.com');
     }
 
-    console.log(url, 'url')
+    // console.log(url, 'url')
     // and load the index.html of the app.
     
     // mainWindow.loadURL('https://radiologist.getdentalray.com/viewer/?StudyInstanceUIDs=1.2.276.0.7230010.3.1.2.650563195.8732.1700499704.346');
@@ -35,22 +35,16 @@ const windowWithRouter = () => {
 
 const windowWithRouterAndCORS = () => {
     const window = windowWithRouter();
-
-    // Modify the origin for all requests to the following urls.
     const filter = {
         urls: [
-            'https://cloudpacs.getdentalray.com/*',
-            /**
-             * @todo Change path to scope local packaged files
-             */
-            'file:///Users/alecpayos/Projects/electron-dicomweb/build/*'
+            'https://*.getdentalray.com/*',
+            `file://${__dirname}/build/*`
         ]
     };
 
     const webRequest = window.webContents.session.webRequest;
 
     webRequest.onBeforeSendHeaders(
-        filter,
         (details, callback) => {
             /**
              * @todo Add logger here for every request done by user.
@@ -62,7 +56,6 @@ const windowWithRouterAndCORS = () => {
     );
 
     webRequest.onHeadersReceived(
-        filter,
         (details, callback) => {
             /**
              * @todo Add logger here for every request done by user.

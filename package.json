@@ -5,6 +5,7 @@
   "description": "OHIF DICOM Web Viewer Electron Integration",
   "main": "src/app.js",
   "scripts": {
+    "viewer-build": "node .os/selector.js",
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
