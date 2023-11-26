@@ -3,7 +3,7 @@
   "productName": "electron-dicomweb",
   "version": "0.1.0",
   "description": "OHIF DICOM Web Viewer Electron Integration",
-  "main": "src/index.js",
+  "main": "src/app.js",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
